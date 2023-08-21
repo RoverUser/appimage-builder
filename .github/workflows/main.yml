@@ -18,7 +18,7 @@ on:
         default: ${{ github.repository == 'minecraft-linux/mcpelauncher-manifest' && (github.sha || github.ref) || 'ng' }}
       mcpelauncher-ui-repo:
         type: string
-        default: https://github.com/minecraft-linux/mcpelauncher-ui-manifest
+        default: https://github.com/RoverUser/mcpelauncher-ui-manifest
       mcpelauncher-ui-ref:
         type: string
         default: ${{ github.repository == 'minecraft-linux/mcpelauncher-ui-manifest' && (github.sha || github.ref) || 'ng' }}
@@ -95,7 +95,7 @@ jobs:
         export LD_LIBRARY_PATH=${LD_LIBRARY_PATH+"${LD_LIBRARY_PATH}:"}$PWD/clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-16.04/lib:${PWD}/build/AppDir/usr/lib
         export CC=clang
         export CXX=clang++
-        ./build_appimage.sh -j4 -q quirks-ubuntu-1604.sh -k "zsync|https://github.com/minecraft-linux/appimage-builder/releases/download/ng.appimage/version.x86_64.zsync" -i ${GITHUB_RUN_NUMBER}${{ inputs.submodule-refs && ' -s' || '' }}
+        ./build_appimage.sh -j4 -q quirks-ubuntu-1604.sh -i ${GITHUB_RUN_NUMBER}${{ inputs.submodule-refs && ' -s' || '' }}
     - name: create update info
       run: |
         cd output
@@ -169,7 +169,7 @@ jobs:
         export CC=clang
         export CXX=clang++
         export PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig/
-        ./build_appimage.sh -t x86 -j4 -q quirks-ubuntu-1604-32.sh -k "zsync|https://github.com/minecraft-linux/appimage-builder/releases/download/ng.appimage/version.i386.zsync" -i ${GITHUB_RUN_NUMBER}${{ inputs.submodule-refs && ' -s' || '' }}
+        ./build_appimage.sh -t x86 -j4 -q quirks-ubuntu-1604-32.sh -i ${GITHUB_RUN_NUMBER}${{ inputs.submodule-refs && ' -s' || '' }}
     - name: create update info
       run: |
         cd output
