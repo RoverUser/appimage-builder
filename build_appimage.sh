@@ -268,6 +268,7 @@ check_run rm -rf "$APP_DIR/usr/lib/libgobject-2.0.so.0"
 
 check_run curl -L -k https://curl.se/ca/cacert.pem --output "$APP_DIR/usr/share/mcpelauncher/cacert.pem"
 
+
 if [ "$TARGETARCH" = "armhf" ] || [ "$TARGETARCH" = "arm64" ]
 then
    check_run rm $APP_DIR/AppRun
