@@ -218,7 +218,6 @@ cp "$SOURCE_DIR/mcpelauncher-ui/mcpelauncher-ui-qt/mcpelauncher-ui-qt.desktop" "
 chmod +x tools/linuxdeploy-*.AppImage
 chmod +x tools/appimagetool-*.AppImage
 
-
 export ARCH=$APPIMAGE_ARCH
 
 fixarm() {
