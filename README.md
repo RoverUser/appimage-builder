@@ -1,3 +1,7 @@
+# The "Play" button is grayed out, how do I play?!?
+Launch the AppImage with the ```--profile YourProfileName``` parameter.
+
+# The original stuff:
 Building debian packages, if you have all dependencies installed
 
 [TODO] Add all dependencies here
