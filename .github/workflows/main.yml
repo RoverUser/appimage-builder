@@ -295,7 +295,7 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     needs: [ build, build32, buildbusterappimage, buildarmappimage64 ]
-    if: ${{ !cancelled() && github.event_name == 'push' && github.server_url == 'https://github.com' && github.repository == 'minecraft-linux/appimage-builder' }}
+    if: ${{ !cancelled() && github.event_name == 'push' && github.server_url == 'https://github.com' && github.repository == 'RoverUser/appimage-builder' }}
     steps:
     - uses: actions/checkout@v3
     - run: echo "APPIMAGE_VERSION=$(cat version.txt)" >> $GITHUB_ENV
@@ -337,21 +337,7 @@ jobs:
         ./ghr*/ghr -t ${{ secrets.GITHUB_TOKEN }} -u ${{ steps.setup-vars.outputs.owner }} -r ${{ steps.setup-vars.outputs.repo }} ${{ !(github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[DRAFT]')) && '-draft ' || '' }}-b "$LAUNCHER_RELEASE_DESCRIPTION$(cat changelog.txt)" "$(cat version.txt)-${GITHUB_RUN_NUMBER}" output/
       env:
         LAUNCHER_RELEASE_DESCRIPTION: |
-          **You need to own Minecraft on the google play store and login with your google account to use this launcher**
-          Links for linux flatpak or macOS can be found on our wiki https://mcpelauncher.readthedocs.io.
-
-          [Download link for intel or amd based 64bit systems ( known as amd64, intel64 and x86_64 e.g. most PC's or Laptops )](https://github.com/minecraft-linux/appimage-builder/releases/download/${{env.APPIMAGE_VERSION}}-${{github.run_number}}/Minecraft_Bedrock_Launcher-x86_64-${{env.APPIMAGE_VERSION}}.${{github.run_number}}.AppImage)
-
-          [Download link for arm based 64bit systems ( known as arm64 and aarch64 e.g. raspberry Pi3 or later, pinephone or pinebook )](https://github.com/minecraft-linux/appimage-builder/releases/download/${{env.APPIMAGE_VERSION}}-${{github.run_number}}/Minecraft_Bedrock_Launcher-arm64-${{env.APPIMAGE_VERSION}}.${{github.run_number}}.AppImage)
-
-          - run `uname -a` to know which system you are using
-          - once downloaded the launcher shows you banner if an update is available
-            - no need to download the whole file again
-            - usually small updates with less than 5MB
-            - you can update it externally with appimageupdate or appimagelauncher
-            - the check for updates can be disabled in settings
-
-          ### Changelog
+          Latest launcher with APK's import feature re-enabled.
     - name: Publish release
       if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[DRAFT]')
       run: |
